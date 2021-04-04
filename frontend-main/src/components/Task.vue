@@ -1,7 +1,7 @@
 <templat>
 <div :class="[task.reminder ? 'reminder' : '', 'task']">
   <h3>{{ task.text }}
-  <i @click="onDelete(task.id)" class="fas fa-times"></i>
+  <i @click="$emit('delete-task', task.id)" class="fas fa-times"></i>
   </h3>
 
   <p>{{ task.day }}</p>
@@ -15,16 +15,11 @@ export default {
   props: {
     task: Object,
   },
-  methods: {
-    onDelete(id) {
-      //console.log(id);
-      this.$emit('delete-task', id)
-    },
-  },
+
 }
 </script>
 
-<style scope>
+<style scoped>
 .fas {
   color: red;
 }
